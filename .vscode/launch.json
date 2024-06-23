@@ -270,6 +270,9 @@
 			"windows": {
 				"runtimeExecutable": "${workspaceFolder}/scripts/code-server.bat",
 			},
+			// Host addr can be passed below
+			/* "args": ["--host", "2405:201:c009:6004:8565:dacc:4672:6ee6"],
+			"args": ["--host", "192.168.29.25"], */
 			"outFiles": [
 				"${workspaceFolder}/out/**/*.js"
 			],
