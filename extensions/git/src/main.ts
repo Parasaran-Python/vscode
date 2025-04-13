@@ -28,6 +28,7 @@ import { GitEditSessionIdentityProvider } from './editSessionIdentityProvider';
 import { GitCommitInputBoxCodeActionsProvider, GitCommitInputBoxDiagnosticsManager } from './diagnostics';
 import { GitBlameController } from './blame';
 import { StagedResourceQuickDiffProvider } from './repository';
+import { registerCommitMessageFolding } from './commitMessageFolding';
 
 const deactivateTasks: { (): Promise<any> }[] = [];
 
@@ -193,6 +194,9 @@ export async function _activate(context: ExtensionContext): Promise<GitExtension
 
 	const logger = window.createOutputChannel('Git', { log: true });
 	disposables.push(logger);
+
+	// Register git commit message folding provider
+	registerCommitMessageFolding(context);
 
 	const onDidChangeLogLevel = (logLevel: LogLevel) => {
 		logger.appendLine(l10n.t('[main] Log level: {0}', LogLevel[logLevel]));
